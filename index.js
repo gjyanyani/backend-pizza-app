@@ -1,18 +1,19 @@
 const express = require("express");
-const cors = require("cors");
+require('colors');
+const morgan = require("morgan");
 
 const app = express();
 
+// middleware
+
 app.use(express.json());
-app.use(cors());
+app.use(morgan('dev'));
 
-app.get("/", (req, res) => {
-  res.send("Welcome to our online shop API...");
-});
+// route
 
-app.get("/products", (req, res) => {
-  res.send([2, 3, 4]);
-});
+app.get('/', (req,res)=>{
+  res.send('<h1>Hello</h1>')
+})
 
 const port = process.env.PORT || 5425;
 
